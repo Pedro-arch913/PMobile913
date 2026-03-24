@@ -4,7 +4,7 @@ import 'package:teste01/home_page.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Home1()
+      home: HomePage()
     ),
   );
 }

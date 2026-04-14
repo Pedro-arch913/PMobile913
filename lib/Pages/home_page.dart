@@ -2,7 +2,7 @@ import 'package:teste01/Pages/config.dart';
 import 'package:teste01/Pages/profile_page.dart';
 import 'package:teste01/pages/explore_page.dart';
 import 'package:flutter/material.dart';
-
+//1
 
   class HomePage extends StatefulWidget {
     const HomePage({super.key});

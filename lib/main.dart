@@ -18,15 +18,16 @@ void main() {
                 margin: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
                 padding: EdgeInsets.all(0.5),
                 decoration: BoxDecoration(
-                  color: Color(0xFF3c3c3c),
+                  color: Color(0xff2a2a2a),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
                     foregroundImage: NetworkImage(
-                      '',
+                      'https://cdn-icons-png.flaticon.com/512/5987/5987462.png',
                     ),
                     radius: 20,
+                    backgroundColor: Color(0x7CFFFFFF),
                   ),
                   title: Text(
                     "Empresa 1",
@@ -39,27 +40,33 @@ void main() {
                   subtitle: Text(
                     "Lorem ipsum dolor sit amet",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 15,
                     ),
                   ),
-                  trailing: Text('00:00', style: TextStyle(color: Colors.white)),
+                  trailing: Text(
+                    '00:00',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
                 padding: EdgeInsets.all(0.5),
                 decoration: BoxDecoration(
-                  color: Color(0xFF3c3c3c),
+                  color: Color(0xff2a2a2a),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
                     foregroundImage: NetworkImage(
-                      '',
+                      'https://cdn-icons-png.flaticon.com/512/5987/5987462.png',
                     ),
                     radius: 20,
+                    backgroundColor: Color(0x7CFFFFFF),
                   ),
                   title: Text(
                     "Empresa 2",
@@ -72,30 +79,36 @@ void main() {
                   subtitle: Text(
                     "Lorem ipsum dolor sit amet",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 15,
                     ),
                   ),
-                  trailing: Text('00:00', style: TextStyle(color: Colors.white)),
+                  trailing: Text(
+                    '00:00',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
     Container(
         margin: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
         padding: EdgeInsets.all(0.5),
         decoration: BoxDecoration(
-          color: Color(0xFF3c3c3c),
+          color: Color(0xff2a2a2a),
           borderRadius: BorderRadius.circular(12),
         ),
         child: ListTile(
                 leading: CircleAvatar(
                   foregroundImage: NetworkImage(
-                    '',
+                    'https://cdn-icons-png.flaticon.com/512/5987/5987462.png',
                   ),
                   radius: 20,
+                  backgroundColor: Color(0x7CFFFFFF),
                 ),
           title: Text(
-            "Empresa 3",
+            'Empresa 3',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -103,21 +116,21 @@ void main() {
             ),
           ),
           subtitle: Text(
-            "Lorem ipsum dolor sit amet",
+            'Lorem ipsum dolor sit amet',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
               color: Colors.white,
               fontSize: 15,
             ),
           ),
                 trailing: Text(
-                  "Lorem ipsum dolor sit amet",
+                  '00:00',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
                     color: Colors.white,
                     fontSize: 15,
                   ),
                 ),
+        ),
+        ),
         ]
      ),
     ),

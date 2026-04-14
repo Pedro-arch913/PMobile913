@@ -1,55 +1,53 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          buildContainer(),
-          buildContainer(),
-
-        ],
-      ),
-    );
-  }
-
-  buildContainer() {
-    return Container(
-      margin: EdgeInsets.all(16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            child: Image.network(
-              'https://afar.brightspotcdn.com/dims4/default/5e0f8f5/2147483647/strip/true/crop/5760x3056+0+0/resize/1440x764!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F0e%2Fe0%2F2d5cbb2139b753c565850eda5611%2Foriginal-amsterdam-the-netherlands-canals-copy.jpg',
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Harligen, Netherlands',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          title: Text('Inbox', style: TextStyle(color: Colors.white)),
+          backgroundColor: Color(0xFF2D2D2D), //#075E54
+        ),
+        body: ListView(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                foregroundImage: NetworkImage(
+                  'https://s2.glbimg.com/VwRVdVa5XGrVcKehDDXqWmr4eYo=/620x620/smart/e.glbimg.com/og/ed/f/original/2021/12/14/246050622_271545034866773_2339200188116438935_n.jpg',
+                ),
+                radius: 28,
               ),
-              Row(children: [Icon(Icons.star, size: 18), Text('4.76')]),
-            ],
-          ),
-          Text('Professional Host'),
-          Text('18-23 Dec'),
-          Text('\$1,065 total'),
-        ],
+              title: Text('Contatinho 913'),
+              subtitle: Text('Oi sumida rsrs'),
+              trailing: Text('ONTEM'),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                foregroundImage: NetworkImage(
+                  'https://rd1.com.br/wp-content/uploads/2019/12/20191208-capture-20191208-180048.png',
+                ),
+                radius: 28,
+              ),
+              title: Text('Varão'),
+              subtitle: Text('Oi abencoada.. Vamos para culto de jovens.. '),
+              trailing: Text('DOMINGO'),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                foregroundImage: NetworkImage(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0wXC8pn8WhfqhTsVWkfGho0mSKM5CFCgWrGtJGFUJtsxrS3V1QhB6UXv-Dc7sQjliTB67evWmWdr_V4g-xCdUz_z2zoZZOBMMX1gKfg&s=10',
+                ),
+                radius: 28,
+              ),
+
+              title: Text('Contatinho 412'),
+              subtitle: Text('Oi linda.. Vamos tomar uma acai..'),
+              trailing: Text('ONTEM'),
+            ),
+          ],
+        ),
       ),
-    );
-  }
+    ),
+  );
 }

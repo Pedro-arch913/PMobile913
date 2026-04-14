@@ -9,7 +9,7 @@ void main() {
         backgroundColor: Color(0xFF0b0b0b),
           appBar: AppBar(centerTitle: false,
             title: Text('Inbox', style: TextStyle(color: Colors.white)),
-            backgroundColor: Color(0xFF2D2D2D), //#2d2d2d
+            backgroundColor: Color(D20xFF2D2D), //#2d2d2d
 
           ),
         body: ListView(

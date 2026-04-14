@@ -4,23 +4,24 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
+        appBar: AppBar(centerTitle: false,
           title: Text('Inbox', style: TextStyle(color: Colors.white)),
           backgroundColor: Color(0xFF2D2D2D), //#075E54
+
         ),
         body: ListView(
           children: [
             ListTile(
               leading: CircleAvatar(
                 foregroundImage: NetworkImage(
-                  'https://s2.glbimg.com/VwRVdVa5XGrVcKehDDXqWmr4eYo=/620x620/smart/e.glbimg.com/og/ed/f/original/2021/12/14/246050622_271545034866773_2339200188116438935_n.jpg',
+                  '',
+
                 ),
                 radius: 28,
               ),
-              title: Text('Contatinho 913'),
-              subtitle: Text('Oi sumida rsrs'),
-              trailing: Text('ONTEM'),
+              title: Text('empresa 1'),
+              subtitle: Text('Lorem ipsum dolor sit amet'),
+              trailing: Text('00:00'),
             ),
             ListTile(
               leading: CircleAvatar(
@@ -45,6 +46,22 @@ void main() {
               subtitle: Text('Oi linda.. Vamos tomar uma acai..'),
               trailing: Text('ONTEM'),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage("https://i.pravatar.cc/150?img=3"),
+                ),
+                title: Text("João Silva"),
+                subtitle: Text("E aí, tudo bem?"),
+                trailing: Text("12:45"),
+              ),
+            )
           ],
         ),
       ),

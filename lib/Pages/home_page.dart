@@ -21,17 +21,9 @@ import 'package:flutter/material.dart';
       ProfilePage(),
     ];
 
-    @override
     Widget build(BuildContext context) {
       return Scaffold(
-        appBar: AppBar(
-          title: TextField(
-            decoration: InputDecoration(
-              hintText: 'Pesquisar',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-            ),
-          ),
-        ),
+        backgroundColor: Colors.black,
         body: pages[selectedIndex],
         bottomNavigationBar: buildBottomNavBar(),
       );
@@ -40,7 +32,7 @@ import 'package:flutter/material.dart';
     buildBottomNavBar() {
       return BottomNavigationBar(
         currentIndex: selectedIndex,
-        selectedItemColor: Color(0xFFE41D56),
+        selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,

@@ -1,10 +1,18 @@
+import 'package:teste01/pages/nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:teste01/home_page.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: HomePage()
-    ),
-  );
+  runApp(MyApp());
 }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'NavBar Exemplo',
+      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+

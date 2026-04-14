@@ -30,6 +30,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
               ),
               ),
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+                padding: EdgeInsets.all(0.5),
+                decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              ),
             ],
           ),
       );

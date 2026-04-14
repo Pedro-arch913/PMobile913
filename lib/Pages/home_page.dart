@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
   class _HomePageState extends State<HomePage> {
     int selectedIndex = 0;
     List pages = [
-      ExplorePage(),
       Center(child: Text('Pagina 1', style: TextStyle(fontSize: 32))),
       Config(),
       Center(child: Text('Pagina 3', style: TextStyle(fontSize: 32))),
@@ -31,9 +30,10 @@ import 'package:flutter/material.dart';
 
     buildBottomNavBar() {
       return BottomNavigationBar(
+        backgroundColor: Color(0xFF2d2d2d),
         currentIndex: selectedIndex,
         selectedItemColor: Colors.deepOrange,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.white,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
@@ -43,7 +43,6 @@ import 'package:flutter/material.dart';
         },
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Trips'),
           BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Inbox'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),

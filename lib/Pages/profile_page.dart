@@ -12,6 +12,16 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(centerTitle: false,
+      title: Text('Profile',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 24
+      ),
+      ),
+        backgroundColor: Color(0xFF2d2d2d
+        ),
+      ),
       backgroundColor: Colors.black,
       body: ListView(
             children: [Padding(padding: EdgeInsets.only(top: 40),
@@ -22,22 +32,45 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ),
                 ),
+
+
               SizedBox(height: 15),
-              Text('Nome De Usuário',textAlign: TextAlign.center, style: TextStyle(fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                color: Colors.white,
+              Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF2d2d2d),
+                    borderRadius: BorderRadius.circular(60),
+                  ),
+                  child: Text(
+                    'Nome De Usuário',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
 
 
-              ),
-              ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
-                padding: EdgeInsets.all(0.5),
+                alignment: Alignment.topLeft,
+                margin: EdgeInsets.only(bottom: 1, left: 4, right: 4),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                color: Color(0xffffffff),
+                color: Color(0xFF666666),
                 borderRadius: BorderRadius.circular(12),
               ),
-              ),
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Email:', style: TextStyle(color: Colors.white),),
+                    Text('Telefone:', style: TextStyle(color: Colors.white),),
+
+                  ],
+                )
+                ),
             ],
           ),
       );

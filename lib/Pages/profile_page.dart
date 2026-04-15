@@ -79,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Config(),
+                      builder: (context) => ServicesPage(),
                     ),
                   );
                 },

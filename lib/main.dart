@@ -8,9 +8,21 @@ void main() {
       home: Scaffold(
         backgroundColor: Color(0xFF0b0b0b),
           appBar: AppBar(centerTitle: false,
-            title: Text('Inbox', style: TextStyle(color: Colors.white)),
-            backgroundColor: Color(D20xFF2D2D), //#2d2d2d
-
+            title: Text(
+              "Inbox",
+              style: TextStyle(
+                color: Colors.white,
+              fontSize: 24,
+              ),
+            ),
+            backgroundColor: Color(0xFF2d2d2d), //#2d2d2d
+            actions: [
+              IconButton(
+                icon: Icon(Icons.menu, color: Colors.white),
+                onPressed: () {
+                },
+              ),
+            ],
           ),
         body: ListView(
             children: [

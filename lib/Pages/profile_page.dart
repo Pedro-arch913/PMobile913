@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:teste01/Pages/services_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -12,6 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Background
       appBar: AppBar(centerTitle: false,
       title: Text('Profile',
       style: TextStyle(
@@ -24,6 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       backgroundColor: Colors.black,
       body: ListView(
+        //icone usuario
             children: [Padding(padding: EdgeInsets.only(top: 40),
               child: Center(
                 child: CircleAvatar( foregroundImage: NetworkImage('https://cdn-icons-png.flaticon.com/512/3106/3106921.png'),
@@ -33,7 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
 
-
+              //nome usuario
               SizedBox(height: 15),
               Center(
                 child: Container(
@@ -43,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     borderRadius: BorderRadius.circular(60),
                   ),
                   child: Text(
-                    'Nome De Usuário',
+                    '  Username  ',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -53,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
 
-
+              //detalhes perfil
               Container(
                 alignment: Alignment.topLeft,
                 margin: EdgeInsets.only(bottom: 1, left: 4, right: 4),
@@ -66,11 +68,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Email:', style: TextStyle(color: Colors.white),),
-                    Text('Telefone:', style: TextStyle(color: Colors.white),),
+                    Text('Telephone:', style: TextStyle(color: Colors.white),),
 
                   ],
                 )
                 ),
+              //Botão
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Config(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Offer Your Services',
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
             ],
           ),
       );

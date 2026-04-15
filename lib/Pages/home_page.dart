@@ -1,4 +1,4 @@
-import 'package:teste01/Pages/config.dart';
+import 'package:teste01/Pages/services_page.dart';
 import 'package:teste01/Pages/profile_page.dart';
 import 'package:teste01/pages/explore_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
     int selectedIndex = 0;
     List pages = [
       Center(child: Text('Pagina 1', style: TextStyle(fontSize: 32))),
-      Config(),
+      Center(child: Text('Pagina 2', style: TextStyle(fontSize: 32))),
       Center(child: Text('Pagina 3', style: TextStyle(fontSize: 32))),
       ProfilePage(),
     ];
@@ -43,7 +43,7 @@ import 'package:flutter/material.dart';
         },
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Trips'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
           BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Inbox'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],

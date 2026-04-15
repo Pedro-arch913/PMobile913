@@ -15,5 +15,18 @@
               ),
 
 
+SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Config(),
+                    ),
+                  );
+                },
+                child: Text('Offer Your Services'),
+              ),
+
 
                 */

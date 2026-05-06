@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
-  const Chat({super.key});
+  final String name;
+  final String avatar;
+  final String info;
+
+  const Chat({
+    super.key,
+    required this.name,
+    required this.avatar,
+    required this.info,
+  });
 
   @override
   State<Chat> createState() => _ChatState();
@@ -11,139 +20,49 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      backgroundColor: Color(0xFF0b0b0b),
-
+      backgroundColor: const Color(0xFF0b0b0b),
       appBar: AppBar(
-        backgroundColor: Color(0xFF2D2D2D),
+        backgroundColor: const Color(0xFF2D2D2D),
         centerTitle: true,
-
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Empresa',
-              style: TextStyle(
+              widget.name,
+              style: const TextStyle(
                 fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Company info',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
+              widget.info,
+              style: const TextStyle(fontSize: 14, color: Colors.white70),
             ),
           ],
         ),
-
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
         ),
-
         actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://cdn-icons-png.flaticon.com/512/5987/5987462.png',
-              ),
-              backgroundColor: Color(0x7CFFFFFF),
+              backgroundImage: NetworkImage(widget.avatar),
+              backgroundColor: const Color(0x7CFFFFFF),
             ),
           ),
         ],
       ),
-
       body: ListView(
         padding: EdgeInsets.all(10),
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              margin: EdgeInsets.symmetric(vertical: 5),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Color(0xFF1F1F1F),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam ',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              margin: EdgeInsets.symmetric(vertical: 5),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Color(0xFFFF6B00),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              margin: EdgeInsets.symmetric(vertical: 5),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Color(0xFFFF6B00),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              margin: EdgeInsets.symmetric(vertical: 5),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Color(0xFF1F1F1F),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 250),
-              margin: EdgeInsets.symmetric(vertical: 5),
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Color(0xFFFF6B00),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
+          _buildMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.', isMe: false),
+          _buildMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit.', isMe: true),
+          _buildMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit', isMe: true),
+          _buildMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.', isMe: false),
+          _buildMessage('Lorem ipsum dolor sit amet, consectetur adipiscing elit', isMe: true),
         ],
       ),
       bottomNavigationBar: Container(
@@ -156,7 +75,7 @@ class _ChatState extends State<Chat> {
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: "Digite uma mensagem...",
-                  hintStyle: TextStyle(color: Color(0xFF1F1F1F)),
+                  hintStyle: TextStyle(color: Color(0xFFAAAAAA)),
                   filled: true,
                   fillColor: Color(0xFF666666),
                   border: OutlineInputBorder(
@@ -166,7 +85,7 @@ class _ChatState extends State<Chat> {
                 ),
               ),
             ),
-            SizedBox(width: 8),
+             SizedBox(width: 8),
             CircleAvatar(
               backgroundColor: Color(0xFFFF6B00),
               child: IconButton(
@@ -176,6 +95,22 @@ class _ChatState extends State<Chat> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMessage(String text, {required bool isMe}) {
+    return Align(
+      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 250),
+        margin: EdgeInsets.symmetric(vertical: 5),
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: isMe ? Color(0xFFFF6B00) : const Color(0xFF1F1F1F),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(text, style: const TextStyle(color: Colors.white)),
       ),
     );
   }

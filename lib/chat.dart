@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
-  final String name;
-  final String avatar;
-  final String info;
+  String name;
+  String avatar;
+  String info;
 
-  const Chat({
-    super.key,
+  Chat({
     required this.name,
     required this.avatar,
     required this.info,
@@ -20,16 +19,15 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0b0b0b),
+      backgroundColor: Color(0xFF0b0b0b),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF2D2D2D),
+        backgroundColor: Color(0xFF2D2D2D),
         centerTitle: true,
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               widget.name,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -37,20 +35,20 @@ class _ChatState extends State<Chat> {
             ),
             Text(
               widget.info,
-              style: const TextStyle(fontSize: 14, color: Colors.white70),
+              style: TextStyle(fontSize: 14, color: Colors.white70),
             ),
           ],
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10),
             child: CircleAvatar(
               backgroundImage: NetworkImage(widget.avatar),
-              backgroundColor: const Color(0x7CFFFFFF),
+              backgroundColor: Color(0x7CFFFFFF),
             ),
           ),
         ],
@@ -107,10 +105,10 @@ class _ChatState extends State<Chat> {
         margin: EdgeInsets.symmetric(vertical: 5),
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isMe ? Color(0xFFFF6B00) : const Color(0xFF1F1F1F),
+          color: isMe ? Color(0xFFFF6B00) : Color(0xFF1F1F1F),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(text, style: const TextStyle(color: Colors.white)),
+        child: Text(text, style: TextStyle(color: Colors.white)),
       ),
     );
   }

@@ -11,7 +11,7 @@ class Inbox extends StatefulWidget {
 class _InboxState extends State<Inbox> {
   int selectedIndex = 2;
 
-  final List<Map<String, String>> conversations = [
+   List<Map<String, String>> conversations = [
     {
       'name': 'Empresa 1',
       'message': 'Lorem ipsum dolor sit amet',

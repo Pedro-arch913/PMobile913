@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
     int selectedIndex = 0;
     List pages = [
       Center(child: Text('Pagina 1', style: TextStyle(fontSize: 32))),
-      Center(child: Text('Pagina 2', style: TextStyle(fontSize: 32))),
+      ExplorePage(),
       Center(child: Text('Pagina 3', style: TextStyle(fontSize: 32))),
       ProfilePage(),
     ];

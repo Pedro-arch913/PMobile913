@@ -90,9 +90,9 @@ class _ExplorePageState extends State<ExplorePage> {
       ),
     );
 
-    buildText(String text){
-      return Text(text, style: GoogleFonts.inter());
-    }
-  }
 
+  }
+  buildText(String text){
+    return Text(text, style: GoogleFonts.inter());
+  }
 }

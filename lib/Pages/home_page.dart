@@ -1,4 +1,3 @@
-import 'package:teste01/Pages/config_page.dart';
 import 'package:teste01/Pages/services_page.dart';
 import 'package:teste01/Pages/profile_page.dart';
 import 'package:teste01/pages/explore_page.dart';
@@ -15,10 +14,11 @@ import 'package:flutter/material.dart';
   class _HomePageState extends State<HomePage> {
     int selectedIndex = 0;
     List pages = [
-      Center(child: Text('Pagina 1', style: TextStyle(fontSize: 32,color: Colors.white))),
-      Center(child: Text('Pagina 2', style: TextStyle(fontSize: 32,color: Colors.white))),
-      Center(child: Text('Pagina 3', style: TextStyle(fontSize: 32,color: Colors.white))),
-      ConfigPage(),
+      Center(child: Text('Pagina 1', style: TextStyle(fontSize: 32))),
+      ExplorePage(),
+      Center(child: Text('Pagina 3', style: TextStyle(fontSize: 32))),
+
+      ProfilePage(),
     ];
 
     Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ import 'package:flutter/material.dart';
           BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
           BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Inbox'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Config'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       );
     }

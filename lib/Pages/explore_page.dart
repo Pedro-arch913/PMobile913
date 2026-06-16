@@ -18,7 +18,7 @@ class _ExplorePageState extends State<ExplorePage> {
         local: 'Roma, Italy',
         host: '12-15 Jan',
         dates: 'Professional Host',
-        total: '\$1,256 total'
+        total: '\$1,256 total',
     ),
     Propriedade(
       urlImage: 'https://afar.brightspotcdn.com/dims4/default/5e0f8f5/2147483647/strip/true/crop/5760x3056+0+0/resize/1440x764!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F0e%2Fe0%2F2d5cbb2139b753c565850eda5611%2Foriginal-amsterdam-the-netherlands-canals-copy.jpg',
@@ -83,16 +83,14 @@ class _ExplorePageState extends State<ExplorePage> {
               Row(children: [Icon(Icons.star, size: 16), Text('4.76')]),
             ],
           ),
-          buildText(propriedade.host),
-          buildText(propriedade.dates),
-          buildText(propriedade.total),
+
         ],
       ),
     );
 
+    buildText(String text){
+      return Text(text, style: GoogleFonts.inter());
+    }
+  }
 
-  }
-  buildText(String text){
-    return Text(text, style: GoogleFonts.inter());
-  }
 }

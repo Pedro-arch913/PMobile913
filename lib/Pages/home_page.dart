@@ -1,4 +1,4 @@
-import 'package:aula_913/Pages/historico_page.dart.';
+import 'package:aula_913/Pages/historico_page.dart';
 import 'package:aula_913/Pages/services_page.dart';
 import 'package:aula_913/Pages/profile_page.dart';
 import 'package:aula_913/pages/explore_page.dart';

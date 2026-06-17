@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../domain/Propriedade.dart';
 
@@ -94,3 +94,4 @@ class _ExplorePageState extends State<ExplorePage> {
   }
 
 }
+*/

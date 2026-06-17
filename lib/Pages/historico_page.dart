@@ -1,6 +1,6 @@
+import 'package:aula_913/db/Historico_dao.dart';
 import 'package:aula_913/db/db_helper.dart';
 import 'package:aula_913/domain/Historico.dart';
-import 'package:aula_913/domain/historico.dart';
 import 'package:aula_913/widget/container_historico.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _HistoricoPageState extends State<HistoricoPage> {
   Widget build(BuildContext context) {
 
     DBHelper().initDB();
-
+    HistoricoDao().listarHistorico();
     return Scaffold(
       appBar: AppBar(centerTitle: false,
         title: Text('Historico',

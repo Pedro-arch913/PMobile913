@@ -1,21 +1,28 @@
+import 'package:aula_913/db/db_helper.dart';
+import 'package:aula_913/domain/Historico.dart';
 import 'package:flutter/material.dart';
-import 'package:teste01/domain/Configs.dart';
 
-class ConfigPage extends StatefulWidget {
-  const ConfigPage({super.key});
+
+class HistoricoDetail extends StatefulWidget {
+  Historico historico;
+
+  HistoricoDetail({super.key, required this.historico});
 
   @override
-  State<ConfigPage> createState() => _ConfigPageState();
+  State<HistoricoDetail> createState() => _HistoricoDetailState();
 }
 
-class _ConfigPageState extends State<ConfigPage> {
+class _HistoricoDetailState extends State<HistoricoDetail> {
   @override
-  List listaConfigs = [];
+  Historico get historico => widget.historico;
 
   Widget build(BuildContext context) {
+
+    DBHelper().initDB();
+
     return Scaffold(
       appBar: AppBar(centerTitle: false,
-        title: Text('Settings',
+        title: Text('Historico',
           style: TextStyle(
               color: Colors.white,
               fontSize: 24
@@ -25,15 +32,18 @@ class _ConfigPageState extends State<ConfigPage> {
         ),
       ),
       backgroundColor: Colors.black,
-      body: ListView.builder(
-        itemCount: listaConfigs.length,
-        itemBuilder: (context, i) {
-          return buildContainer(configs: listaConfigs[i]);
-        },
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              Image.network(historico.imagem),
+            ],
+          )
+        ],
       ),
     );
   }
-  buildContainer({required Configs configs}){
+  buildContainer({required Historico historico}){
     return Container(
       margin: EdgeInsets.all(8),
       child: Column(
@@ -46,7 +56,7 @@ class _ConfigPageState extends State<ConfigPage> {
         children: [
           ClipRRect(
             child: Image.network(
-                configs.iconConfig, height: 20, fit: BoxFit.cover),
+                historico.imagem, height: 20, fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(8),
           ),
         ],

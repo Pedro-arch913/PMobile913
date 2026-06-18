@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste01/inbox.dart';
+import 'package:teste01/pages/inbox.dart';
 
 
 void main() {

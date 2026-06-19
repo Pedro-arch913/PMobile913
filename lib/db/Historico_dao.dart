@@ -4,21 +4,22 @@ import 'package:sqflite/sqflite.dart';
 
 
 class HistoricoDao {
-  Future<void> listarHistorico() async {
 
+  Future<List<Historico>> listarHistorico() async {
     Database db = await DBHelper().initDB();
 
     var listaResult = await db.rawQuery('SELECT * FROM HISTORICO;');
 
+    List<Historico> lista = [];
     for(var json in listaResult){
       print(json);
+        //imagem: json['imagem'],
+        //servico: json['servico'],
+        //preco: json['preco'],);
 
-      Historico(
-        imagem: json['imagem'],
-        servico: json['servico'],
-        preco: json['preco'],
-      )
+      Historico historico = Historico.fromJson(json);
+      lista.add(historico);
     }
-
+    return lista;
   }
 }

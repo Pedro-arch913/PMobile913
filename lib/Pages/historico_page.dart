@@ -11,26 +11,32 @@ class HistoricoPage extends StatefulWidget {
   @override
   State<HistoricoPage> createState() => _HistoricoPageState();
 }
-
 class _HistoricoPageState extends State<HistoricoPage> {
-  @override
+  // Carregar os dados:
   List<Historico> listaHistorico = [];
 
-  Widget build(BuildContext context) {
+  void initState(){
+    super.initState();
+    loadData();
+  }
 
-    DBHelper().initDB();
-    HistoricoDao().listarHistorico();
+  loadData() async {
+    listaHistorico = await HistoricoDao().listarHistorico();
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {});
+  }
+
+  Widget build(BuildContext context) {
+    //Estrutura:
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(centerTitle: false,
         title: Text('Historico',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 24
-          ),
+          style: TextStyle(color: Colors.white, fontSize: 24),
         ),
-        backgroundColor: Color(0xFF2d2d2d
-        ),
+        backgroundColor: Color(0xFF2d2d2d),
       ),
+
       //conteudo
       body: ListView.builder(
         itemCount: listaHistorico.length,

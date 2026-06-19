@@ -27,38 +27,53 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
           ),
         );
       },
-    child: Container(margin: EdgeInsets.all(16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+    child: Card(
+      color: Colors.grey,
+      elevation: 5,
+      margin: EdgeInsets.all(16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(padding: EdgeInsets.all(12),
+      child: Row(
+
         children: [
-          Stack(
-            fit: StackFit.passthrough,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(widget.historico.imagem,height: 80,width: 80,
+            fit: BoxFit.fill,
+            ),
+          ),
+
+          SizedBox(width: 12),
+
+          Expanded(child:
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                child: Image.network(widget.historico.imagem,
-                height: 100,
-                fit: BoxFit.cover,
+              Text(widget.historico.servico,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(8),
-              )
-            ],
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(widget.historico.preco),
 
+              SizedBox(width: 8),
 
-            ],
-          ),
-          buildText(widget.historico.servico),
-
+              Text("R\$ ${widget.historico.preco}",
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 16,
+              ),)
+              ],
+            )
+          )
         ],
       ),
+    ),
 
-    )
+    ),
     );
     onTapContainer(){}
 

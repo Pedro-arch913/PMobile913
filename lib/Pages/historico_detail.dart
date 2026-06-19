@@ -16,13 +16,11 @@ class _HistoricoDetailState extends State<HistoricoDetail> {
   @override
   Historico get historico => widget.historico;
 
+
   Widget build(BuildContext context) {
-
-    DBHelper().initDB();
-
     return Scaffold(
       appBar: AppBar(centerTitle: false,
-        title: Text('Historico',
+        title: Text('Detalhes do serviço',
           style: TextStyle(
               color: Colors.white,
               fontSize: 24
@@ -45,7 +43,7 @@ class _HistoricoDetailState extends State<HistoricoDetail> {
   }
   buildContainer({required Historico historico}){
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.all(25),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -62,6 +60,22 @@ class _HistoricoDetailState extends State<HistoricoDetail> {
         ],
       ),
       SizedBox(height: 8),
+          Stack(
+              children: [
+                Text(widget.historico.servico,
+                style: TextStyle(
+                color: Colors.white,
+                fontSize: 16
+                 ),
+              ),
+                Text(widget.historico.preco,
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 16
+                  ),
+                ),
+            ]
+          ),
         ],
       ),
 

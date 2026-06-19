@@ -7,7 +7,7 @@ class ContatoDao {
   Future<List<Contatos>> listarContatos() async {
     Database db = await DbHelper().initDB();
 
-    var result = await db.query('SELECT * FROM CONTATO');
+    var result = await db.rawQuery('SELECT * FROM CONTATO');
 
     List<Contatos> lista = [];
 

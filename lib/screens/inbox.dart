@@ -12,14 +12,19 @@ class Inbox extends StatefulWidget {
 
 class _InboxState extends State<Inbox> {
   final ContatoDao contatoDao = ContatoDao();
-  late Future<List<Contatos>> contatosFuture;
 
+  List<Contatos> listaContatos = [];
   @override
   void initState() {
     super.initState();
-    contatosFuture = contatoDao.listarContatos();
+    loadData();
+  } 
+  
+  loadData() async {
+    listaContatos = await contatoDao.listarContatos();
+    setState(() {});
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,39 +43,10 @@ class _InboxState extends State<Inbox> {
           ),
         ],
       ),
-      body: FutureBuilder<List<Contatos>>(
-        future: contatosFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                'Erro ao carregar contatos: ${snapshot.error}',
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-          }
-
-          final contatos = snapshot.data ?? [];
-
-          if (contatos.isEmpty) {
-            return Center(
-              child: Text(
-                'Nenhum contato encontrado',
-                style: TextStyle(color: Colors.white),
-              ),
-            );
-          }
-
-          return ListView.builder(
-            itemCount: contatos.length,
-            itemBuilder: (context, index) {
-              return ContainerContato(contato: contatos[index]);
-            },
-          );
+      body: ListView.builder(
+        itemCount: listaContatos.length,
+        itemBuilder: (context, i) {
+          return ContainerContato(contato: listaContatos[i]);
         },
       ),
     );

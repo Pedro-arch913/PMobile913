@@ -38,21 +38,14 @@ class _HistoricoPageState extends State<HistoricoPage> {
       ),
 
       //conteudo
-      body: listaHistorico.isEmpty
-      ? Center(
-        child: CircularProgressIndicator(),
-      ):
-    Padding(padding: EdgeInsets.symmetric(vertical: 10),
-          child: ListView.builder(
-            itemCount: listaHistorico.length,
-            itemBuilder: (context, i) {
-              return ContainerHistorico(historico: listaHistorico[i],
-      );
-
+      body: ListView.builder(
+        itemCount: listaHistorico.length,
+        itemBuilder: (context, i) {
+          return ContainerHistorico(historico: listaHistorico[i]);
         },
       ),
-     )
+
     );
-   }
+  }
   }
 

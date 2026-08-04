@@ -19,78 +19,69 @@ class _HistoricoDetailState extends State<HistoricoDetail> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text(
-          'Detalhes do Serviço',
-          style: TextStyle(color: Colors.white),
+      appBar: AppBar(centerTitle: false,
+        title: Text('Detalhes do serviço',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 24
+          ),
         ),
-        backgroundColor: Color(0xFF2d2d2d),
+        backgroundColor: Color(0xFF2d2d2d
+        ),
       ),
+      backgroundColor: Colors.black,
       body: ListView(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20
-              /*bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),*/
-            ),
-            child: Image.network(
-              historico.imagem,
-              height: 250,
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Card(
-              color: Colors.grey[900],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding:  EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      historico.servico,
-                      style:  TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                     SizedBox(height: 15),
-
-                    Text(
-                      "Preço",
-                      style: TextStyle(
-                        color: Colors.grey[400],
-                        fontSize: 16,
-                      ),
-                    ),
-
-                     SizedBox(height: 5),
-
-                    Text(
-                      "R\$ ${historico.preco}",
-                      style:  TextStyle(
-                        color: Colors.green,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          Stack(
+            children: [
+              Image.network(historico.imagem),
+            ],
+          )
         ],
       ),
     );
   }
-}
+  buildContainer({required Historico historico}){
+    return Container(
+      margin: EdgeInsets.all(25),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
 
+        children: [
+        Stack(
+        fit: StackFit.passthrough,
+        children: [
+          ClipRRect(
+            child: Image.network(
+                historico.imagem, height: 20, fit: BoxFit.cover),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ],
+      ),
+      SizedBox(height: 8),
+          Stack(
+              children: [
+                Text(widget.historico.servico,
+                style: TextStyle(
+                color: Colors.white,
+                fontSize: 16
+                 ),
+              ),
+                Text(widget.historico.preco,
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 16
+                  ),
+                ),
+            ]
+          ),
+        ],
+      ),
+
+    );
+
+  }
+
+
+}

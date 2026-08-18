@@ -57,4 +57,26 @@ class DbHelper {
         "INSERT INTO MENSAGEM (contato_id, texto, send_by_me) VALUES ('1', 'oi', 'no')";
     await db.execute(sql);
   }
+  FutureOr<void> onCreatedb(Database gardeldb, int version) async {
+    String sql = '''CREATE TABLE services(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT,
+      description TEXT,
+      image TEXT);
+    ''';
+    await gardeldb.execute(sql);
+
+    sql =
+    "INSERT INTO services (name, description, image) VALUES ('Complete Kitchen Renovation', 'Complete kitchen remodeling including tiles, cabinets, sinks, faucets, painting and finishes.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRshZcj2KS6c8Yt1A3TKqVpVa0a-NDY21-Mzr9VFkAYwUA9SUweUeuLbUPG&s=10');";
+    await gardeldb.execute(sql);
+    sql =
+    "INSERT INTO services (name, description, image) VALUES ('Construction of Leisure Area', 'Construction of patio, deck or grill area with structure, roofing and finishes.', 'https://sodramar.com.br/wp-content/uploads/2020/11/211.jpg');";
+    await gardeldb.execute(sql);
+    sql =
+    "INSERT INTO services (name, description, image) VALUES ('Installation of Central Air Conditioning System', 'Complete central air conditioning installation with piping, electrical wiring and testing.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRmoVUeCJ-qTgqQk5sspwaZmW65ounvlG4JCIIKJGrlKB5AIzaDbIxK8g&s=10');";
+    await gardeldb.execute(sql);
+    sql =
+    "INSERT INTO services (name, description, image) VALUES ('Landscape and Drainage Construction', 'Complete landscape design and execution, automatic irrigation system and drainage system.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrvq6IzK6Ru2DsUTsHpJOyLJeSywSf3BCaogn82-_low0y94NNHExmcUcK&s=10');";
+    await gardeldb.execute(sql);
+  }
 }

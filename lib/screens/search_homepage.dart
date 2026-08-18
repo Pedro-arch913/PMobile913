@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'screens_explore_services/greatservices_homepage.dart';
 
-class Explore extends StatefulWidget {
-  const Explore({super.key});
+class SearchHomePage extends StatefulWidget {
+  const SearchHomePage({super.key});
 
   @override
-  State<Explore> createState() => _ExploreState();
+  State<SearchHomePage> createState() => _SearchHomePageState();
 }
 
-class _ExploreState extends State<Explore> {
+class _SearchHomePageState extends State<SearchHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 31, 31, 31),
+      backgroundColor: Color(0xFF1F1F1F),
+
       appBar: AppBar(
         backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Services",
+              "Explore",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),
@@ -30,10 +33,8 @@ class _ExploreState extends State<Explore> {
             ),
           ],
         ),
-        actions: [
-          Container(child: Icon(Icons.menu, size: 40, color: Colors.white)),
-        ],
       ),
+
       body: ListView(
         padding: EdgeInsets.all(12),
         children: [
@@ -57,14 +58,19 @@ class _ExploreState extends State<Explore> {
               ),
               padding: EdgeInsets.symmetric(vertical: 25),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GreatServHomePage()),
+              );
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Great Services",
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 30,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFFFFFFFF),
                   ),
@@ -77,6 +83,7 @@ class _ExploreState extends State<Explore> {
               ],
             ),
           ),
+
           Padding(padding: EdgeInsetsGeometry.only(top: 20)),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -93,7 +100,7 @@ class _ExploreState extends State<Explore> {
                 Text(
                   "Small Services",
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 30,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFFFFFFFF),
                   ),

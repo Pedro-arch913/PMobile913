@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/screens/explore.dart';
+import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox.dart';
 import 'package:pmobile913/screens/profile.dart';
 
@@ -56,7 +56,7 @@ class _MainAppState extends State<MainApp> {
           index: _selectedIndex,
           children: [
             Placeholder(),
-            Explore(),
+            SearchHomePage(),
             Inbox(),
             ProfilePage(),
           ],

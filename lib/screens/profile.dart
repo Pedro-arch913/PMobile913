@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/screens/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pmobile913/screens/search_homepage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -9,19 +10,29 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Background
+      backgroundColor: Color(0xFF1F1F1F),
+
       appBar: AppBar(
-        centerTitle: false,
-        title: Text(
-          'Profile',
-          style: TextStyle(color: Colors.white, fontSize: 24),
+        backgroundColor: Color(0xFF282829),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Profile",
+              style: GoogleFonts.inter(
+                textStyle: TextStyle(
+                  color: Color(0xFFff6b00),
+                  fontWeight: FontWeight.w800,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ],
         ),
-        backgroundColor: Color(0xFF2d2d2d),
       ),
-      backgroundColor: Colors.black,
+
       body: ListView(
         //icone usuario
         children: [
@@ -73,19 +84,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 Text('Email:', style: TextStyle(color: Colors.white)),
                 Text('Telephone:', style: TextStyle(color: Colors.white)),
               ],
-            ),
-          ),
-          //Botão
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ServicesPage()),
-              );
-            },
-            child: Text(
-              'Offer Your Services',
-              style: TextStyle(color: Colors.white),
             ),
           ),
         ],

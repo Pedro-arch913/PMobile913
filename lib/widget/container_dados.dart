@@ -1,5 +1,5 @@
 import 'package:pmobile913/domain/dados.dart';
-import 'package:pmobile913/Pages/detail_page.dart';
+import 'package:pmobile913/screens/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class ContainerDados extends StatefulWidget{

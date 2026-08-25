@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/domain/Historico.dart';
-import 'package:pmobile913/Pages/historico_page.dart';
-import 'package:pmobile913/Pages/historico_detail.dart';
-import 'package:pmobile913/Pages/services_page.dart';
+import 'package:pmobile913/domain/historico.dart';
+import 'package:pmobile913/screens/historico_page.dart';
+import 'package:pmobile913/screens/historico_detail.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 

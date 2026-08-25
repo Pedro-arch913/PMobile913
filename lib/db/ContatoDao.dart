@@ -5,7 +5,7 @@ import 'dart:async';
 
 class ContatoDao {
   Future<List<Contatos>> listarContatos() async {
-    Database db = await DbHelper().initDB();
+    Database db = await DBHelper().initDB();
 
     var result = await db.rawQuery('SELECT * FROM CONTATO');
 

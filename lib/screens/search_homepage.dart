@@ -56,7 +56,7 @@ class _SearchHomePageState extends State<SearchHomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              padding: EdgeInsets.symmetric(vertical: 25),
+              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 14),
             ),
             onPressed: () {
               Navigator.push(
@@ -77,8 +77,8 @@ class _SearchHomePageState extends State<SearchHomePage> {
                 ),
                 Image.asset(
                   'assets/great_service-image.png',
-                  width: 120,
-                  height: 120,
+                  width: 90,
+                  height: 90,
                 ),
               ],
             ),
@@ -91,7 +91,7 @@ class _SearchHomePageState extends State<SearchHomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              padding: EdgeInsets.symmetric(vertical: 25),
+              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 14),
             ),
             onPressed: () {},
             child: Row(
@@ -107,8 +107,8 @@ class _SearchHomePageState extends State<SearchHomePage> {
                 ),
                 Image.asset(
                   'assets/small_service-image.png',
-                  width: 120,
-                  height: 120,
+                  width: 90,
+                  height: 90,
                 ),
               ],
             ),

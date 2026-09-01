@@ -103,7 +103,17 @@ import 'package:pmobile913/screens/detail_page.dart';
         backgroundColor: Colors.orange,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
-              builder: (context) => DetailPage()
+            builder: (context) => DetailPage(
+              dados: Dados(
+                urlImagem: 'assets/imagens/download.jpg',
+                informacoes:
+                'Estou precisando da ajuda de algum profissional '
+                    'que consiga fazer manutenção em disjuntores elétricos '
+                    'residenciais.',
+                nome: 'Sr. Manoel',
+                avaliacao: '4.5',
+              ),
+            ),
           ),
           );
         },

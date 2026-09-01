@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pmobile913/db/HistoricoDao.dart';
+import 'package:pmobile913/db/db_helper.dart';
 import 'package:pmobile913/domain/historico.dart';
 import 'package:pmobile913/widget/container_historico.dart';
+import 'package:flutter/material.dart';
 
 class HistoricoPage extends StatefulWidget {
   const HistoricoPage({super.key});
@@ -11,53 +13,55 @@ class HistoricoPage extends StatefulWidget {
 }
 
 class _HistoricoPageState extends State<HistoricoPage> {
-  List<Historico> listaHistorico = [];
-  bool carregando = true;
+  late Future<List<Historico>> futureListaHistorico;
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  Future<void> loadData() async {
-    final dados = await HistoricoDao().listarHistorico();
-    if (!mounted) return;
-    setState(() {
-      listaHistorico = dados;
-      carregando = false;
-    });
+    futureListaHistorico = HistoricoDao().listarHistorico();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFF1F1F1F),
       appBar: AppBar(
-        title: const Text(
-          'Histórico',
-          style: TextStyle(color: Colors.white, fontSize: 24),
-        ),
-        backgroundColor: const Color(0xFF2D2D2D),
-      ),
-      body: carregando
-          ? const Center(child: CircularProgressIndicator())
-          : listaHistorico.isEmpty
-              ? const Center(
-                  child: Text(
-                    'Nenhum serviço no histórico.',
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                )
-              : ListView.builder(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  itemCount: listaHistorico.length,
-                  itemBuilder: (context, i) {
-                    return ContainerHistorico(
-                      historico: listaHistorico[i],
-                    );
-                  },
+        backgroundColor: Color(0xFF282829),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "History",
+              style: GoogleFonts.inter(
+                textStyle: TextStyle(
+                  color: Color(0xFFff6b00),
+                  fontWeight: FontWeight.w800,
+                  fontSize: 24,
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: FutureBuilder(
+        future: futureListaHistorico,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<Historico> listaHistorico = snapshot.requireData;
+            return buildListView(listaHistorico);
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
+
+  buildListView(listaHistorico) {
+    return ListView.builder(
+      itemCount: listaHistorico.length,
+      itemBuilder: (context, i) {
+        return ContainerHistorico(historico: listaHistorico[i]);
+      },
     );
   }
 }

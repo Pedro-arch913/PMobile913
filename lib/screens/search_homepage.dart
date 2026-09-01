@@ -22,7 +22,7 @@ class _SearchHomePageState extends State<SearchHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Explore",
+              "Home",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),
@@ -38,13 +38,32 @@ class _SearchHomePageState extends State<SearchHomePage> {
       body: ListView(
         padding: EdgeInsets.all(12),
         children: [
-          TextField(
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search_outlined),
-              hintText: 'Search a service',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(80),
+          Container(
+            height: 46,
+            decoration: BoxDecoration(
+              color: const Color(0xFF2B2B2B),
+              borderRadius: BorderRadius.circular(9),
+            ),
+            child: TextField(
+              style: GoogleFonts.inter(
+                color: Colors.white,
+                fontSize: 14,
+              ),
+
+              decoration: InputDecoration(
+                border: InputBorder.none,
+
+                hintText: 'Search Services',
+
+                hintStyle: GoogleFonts.inter(
+                  color: Colors.grey.shade500,
+                  fontSize: 14,
+                ),
+
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.grey.shade500,
+                ),
               ),
             ),
           ),

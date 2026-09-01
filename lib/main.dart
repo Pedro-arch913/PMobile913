@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pmobile913/screens/historico_page.dart';
+import 'package:pmobile913/screens/inicial_page.dart';
+import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox.dart';
 import 'package:pmobile913/screens/profile.dart';
@@ -54,15 +57,21 @@ class _MainAppState extends State<MainApp> {
               activeIcon: Icon(Icons.person),
               label: 'Profile',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              activeIcon: Icon(Icons.history),
+              label: 'History',
+            ),
           ],
         ),
         body: IndexedStack(
           index: _selectedIndex,
           children: [
-            Placeholder(),
+            InicialPage(),
             SearchHomePage(),
             Inbox(),
             ProfilePage(),
+            HistoricoPage(),
           ],
         ),
       ),

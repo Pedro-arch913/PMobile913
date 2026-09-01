@@ -1,85 +1,132 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/domain/historico.dart';
-import 'package:pmobile913/screens/historico_page.dart';
 import 'package:pmobile913/screens/historico_detail.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
 class ContainerHistorico extends StatefulWidget {
-  Historico historico;
+  final Historico historico;
 
-  ContainerHistorico({super.key, required this.historico});
+  const ContainerHistorico({
+    super.key,
+    required this.historico,
+  });
 
   @override
   State<ContainerHistorico> createState() => _ContainerHistoricoState();
 }
 
 class _ContainerHistoricoState extends State<ContainerHistorico> {
-
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context){
-          return HistoricoDetail(historico: widget.historico);
-        },
-        ),
+      borderRadius: BorderRadius.circular(15),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return HistoricoDetail(
+                historico: widget.historico,
+              );
+            },
+          ),
         );
       },
       child: Card(
-        color: Colors.grey,
-        elevation: 5,
-        margin: EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+        // Mantém o card claro, sem alterar o fundo da página
+        color: Colors.white10,
+        elevation: 4,
+        shadowColor: Colors.black.withOpacity(0.15),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
         ),
-        child: Padding(padding: EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
           child: Row(
-
             children: [
+              // Imagem
               ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(widget.historico.imagem,height: 80,width: 80,
-                  fit: BoxFit.fill,
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  widget.historico.imagem,
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 80,
+                      width: 80,
+                      color: Colors.grey.shade200,
+                      child: Icon(
+                        Icons.image_not_supported_outlined,
+                        color: Colors.grey.shade500,
+                        size: 30,
+                      ),
+                    );
+                  },
                 ),
               ),
 
-              SizedBox(width: 12),
+              const SizedBox(width: 14),
 
-              Expanded(child:
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.historico.servico,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+              // Informações
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.historico.servico,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF333333),
+                      ),
                     ),
-                  ),
 
-                  SizedBox(width: 8),
+                    const SizedBox(height: 8),
 
-                  Text("R\$ ${widget.historico.preco}",
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 16,
-                    ),)
-                ],
-              )
-              )
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.attach_money_rounded,
+                          size: 19,
+                          color: Colors.green,
+                        ),
+
+                        const SizedBox(width: 3),
+
+                        Text(
+                          "R\$ ${widget.historico.preco}",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green.shade700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(width: 8),
+
+              // Ícone indicando que o card é clicável
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 17,
+                color: Colors.grey.shade500,
+              ),
             ],
           ),
         ),
-
       ),
     );
-    onTapContainer(){}
-
   }
-
-  buildText(String text) {
-    return Text(text, style: GoogleFonts.inter());
-  }
-
 }

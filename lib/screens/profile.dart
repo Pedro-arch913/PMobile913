@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Profile",
+              "Perfil",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),

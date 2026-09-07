@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/screens/historico_page.dart';
-import 'package:pmobile913/screens/inicial_page.dart';
+import 'package:pmobile913/screens/history_homepage.dart';
+import 'package:pmobile913/screens/home.dart';
 import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox_homepage.dart';
@@ -23,12 +23,22 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFFFF6B35),
+          surface: Color(0xFFFFFFFF),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF7F7F7),
+      ),
+
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFF2d2d2d),
+          backgroundColor: Colors.white,
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.deepOrange,
-          unselectedItemColor: Colors.white,
+          selectedItemColor: const Color(0xFFFF6B35),
+          unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           onTap: (int index) {
@@ -36,6 +46,7 @@ class _MainAppState extends State<MainApp> {
               _selectedIndex = index;
             });
           },
+
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.house_outlined),
@@ -64,6 +75,7 @@ class _MainAppState extends State<MainApp> {
             ),
           ],
         ),
+
         body: IndexedStack(
           index: _selectedIndex,
           children: [

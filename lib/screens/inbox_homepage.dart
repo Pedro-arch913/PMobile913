@@ -36,7 +36,7 @@ class _InboxState extends State<Inbox> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Inbox",
+              "Mensagens",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),

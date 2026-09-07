@@ -19,8 +19,8 @@ class _InboxState extends State<Inbox> {
   void initState() {
     super.initState();
     loadData();
-  } 
-  
+  }
+
   loadData() async {
     listaContatos = await contatoDao.listarContatos();
     setState(() {});

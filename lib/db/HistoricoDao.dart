@@ -2,8 +2,6 @@ import 'package:pmobile913/db/db_helper.dart';
 import 'package:pmobile913/domain/historico.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'db_helper.dart';
-
 class HistoricoDao {
   Future<List<Historico>> listarHistorico() async {
     Database db = await DBHelper().initDB();

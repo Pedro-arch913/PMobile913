@@ -40,27 +40,27 @@ class _MainAppState extends State<MainApp> {
             BottomNavigationBarItem(
               icon: Icon(Icons.house_outlined),
               activeIcon: Icon(Icons.house),
-              label: 'Home',
+              label: 'Início',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.explore_outlined),
               activeIcon: Icon(Icons.explore),
-              label: 'Explore',
+              label: 'Explorar',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.message_outlined),
               activeIcon: Icon(Icons.message),
-              label: 'Inbox',
+              label: 'Mensagens',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               activeIcon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Perfil',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history),
+              icon: Icon(Icons.history_outlined),
               activeIcon: Icon(Icons.history),
-              label: 'History',
+              label: 'Histórico',
             ),
           ],
         ),

@@ -10,7 +10,6 @@ class SearchHomePage extends StatefulWidget {
 }
 
 class _SearchHomePageState extends State<SearchHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +21,7 @@ class _SearchHomePageState extends State<SearchHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Home",
+              "Explorar",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),
@@ -45,25 +44,15 @@ class _SearchHomePageState extends State<SearchHomePage> {
               borderRadius: BorderRadius.circular(9),
             ),
             child: TextField(
-              style: GoogleFonts.inter(
-                color: Colors.white,
-                fontSize: 14,
-              ),
-
+              style: GoogleFonts.inter(color: Colors.white, fontSize: 14),
               decoration: InputDecoration(
                 border: InputBorder.none,
-
                 hintText: 'Search Services',
-
                 hintStyle: GoogleFonts.inter(
                   color: Colors.grey.shade500,
                   fontSize: 14,
                 ),
-
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.grey.shade500,
-                ),
+                prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
               ),
             ),
           ),

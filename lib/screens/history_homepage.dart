@@ -23,9 +23,7 @@ class _HistoricoPageState extends State<HistoricoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -54,9 +52,9 @@ class _HistoricoPageState extends State<HistoricoPage> {
       ),
     );
   }
-
   buildListView(listaHistorico) {
     return ListView.builder(
+      padding: const EdgeInsets.only(top: 20),
       itemCount: listaHistorico.length,
       itemBuilder: (context, i) {
         return ContainerHistorico(historico: listaHistorico[i]);

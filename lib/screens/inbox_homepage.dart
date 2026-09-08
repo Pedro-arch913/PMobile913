@@ -28,10 +28,7 @@ class _InboxState extends State<Inbox> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
-
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -50,6 +47,7 @@ class _InboxState extends State<Inbox> {
       ),
 
       body: ListView.builder(
+        padding: const EdgeInsets.only(left:14, top: 20, right: 14),
         itemCount: listaContatos.length,
         itemBuilder: (context, i) {
           return ContainerContato(contato: listaContatos[i]);

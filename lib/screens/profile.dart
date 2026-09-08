@@ -12,10 +12,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
-
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,10 +31,9 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
 
       body: ListView(
-        //icone usuario
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.only(left:14, top: 40, right: 14),
             child: Center(
               child: CircleAvatar(
                 foregroundImage: NetworkImage(
@@ -48,8 +44,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-
-          //nome usuario
           SizedBox(height: 15),
           Center(
             child: Container(
@@ -69,10 +63,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
 
-          //detalhes perfil
           Container(
             alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(bottom: 1, left: 4, right: 4),
+            margin: EdgeInsets.only(bottom: 1, left: 14, right: 14, top: 10),
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Color(0xFF666666),

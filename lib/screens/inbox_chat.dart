@@ -21,9 +21,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0b0b0b),
       appBar: AppBar(
-        backgroundColor: Color(0xFF2D2D2D),
         centerTitle: true,
         title: Column(
           children: [
@@ -31,13 +29,12 @@ class _ChatState extends State<Chat> {
               widget.name,
               style: TextStyle(
                 fontSize: 22,
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               widget.info,
-              style: TextStyle(fontSize: 14, color: Colors.white70),
+              style: TextStyle(fontSize: 14),
             ),
           ],
         ),

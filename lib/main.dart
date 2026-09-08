@@ -26,16 +26,16 @@ class _MainAppState extends State<MainApp> {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-        colorScheme: const ColorScheme.light(
-          primary: Color(0xFFFF6B35),
-          surface: Color(0xFFFFFFFF),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF121212),
+          surface: Color(0xFF1E1E1E),
         ),
-        scaffoldBackgroundColor: const Color(0xFFF7F7F7),
+        scaffoldBackgroundColor: const Color(0xFF121212),
       ),
 
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xFF1E1E1E),
           currentIndex: _selectedIndex,
           selectedItemColor: const Color(0xFFFF6B35),
           unselectedItemColor: Colors.grey,

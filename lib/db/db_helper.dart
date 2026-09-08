@@ -120,5 +120,18 @@ class DBHelper {
     sql =
     "INSERT INTO MENSAGEM (contato_id, texto, send_by_me) VALUES (1, 'oi', '1');";
     await db.execute(sql);
+
+
+    sql = '''CREATE TABLE PROFILE (
+    id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    telephone TEXT NOT NULL
+       );''';
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO PROFILE (username, email, telephone) VALUES ('Username', 'email.com.br', '9999999999');";
+    await db.execute(sql);
   }
 }

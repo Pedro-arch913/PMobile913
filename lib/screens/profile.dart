@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pmobile913/api/profile_api.dart'; // Import da nova Service API
+import 'package:pmobile913/api/profile_api.dart';
 import 'package:pmobile913/domain/profile.dart';
 
 class ProfilePage extends StatefulWidget {

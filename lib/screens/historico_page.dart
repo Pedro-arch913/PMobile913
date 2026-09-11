@@ -1,6 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pmobile913/db/HistoricoDao.dart';
-import 'package:pmobile913/db/db_helper.dart';
 import 'package:pmobile913/domain/historico.dart';
 import 'package:pmobile913/widget/container_historico.dart';
 import 'package:flutter/material.dart';

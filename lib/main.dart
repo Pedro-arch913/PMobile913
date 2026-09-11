@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/screens/historico_page.dart';
 import 'package:pmobile913/screens/inicial_page.dart';
-import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox.dart';
 import 'package:pmobile913/screens/profile.dart';

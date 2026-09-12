@@ -6,10 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ContainerHistorico extends StatefulWidget {
   final Historico historico;
 
-  const ContainerHistorico({
-    super.key,
-    required this.historico,
-  });
+  const ContainerHistorico({super.key, required this.historico});
 
   @override
   State<ContainerHistorico> createState() => _ContainerHistoricoState();
@@ -25,25 +22,17 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return HistoricoDetail(
-                historico: widget.historico,
-              );
+              return HistoricoDetail(historico: widget.historico);
             },
           ),
         );
       },
       child: Card(
-        // Mantém o card claro, sem alterar o fundo da página
         color: Colors.white10,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.15),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(

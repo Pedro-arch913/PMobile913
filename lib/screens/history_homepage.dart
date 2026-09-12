@@ -52,9 +52,9 @@ class _HistoricoPageState extends State<HistoricoPage> {
       ),
     );
   }
+
   buildListView(listaHistorico) {
     return ListView.builder(
-      padding: const EdgeInsets.only(top: 20),
       itemCount: listaHistorico.length,
       itemBuilder: (context, i) {
         return ContainerHistorico(historico: listaHistorico[i]);

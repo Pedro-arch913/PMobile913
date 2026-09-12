@@ -35,10 +35,10 @@ class _MainAppState extends State<MainApp> {
 
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFF1E1E1E),
+          backgroundColor: Color(0xFF2d2d2d),
           currentIndex: _selectedIndex,
-          selectedItemColor: const Color(0xFFFF6B35),
-          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.deepOrange,
+          unselectedItemColor: Colors.white,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           onTap: (int index) {
@@ -46,7 +46,6 @@ class _MainAppState extends State<MainApp> {
               _selectedIndex = index;
             });
           },
-
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.house_outlined),
@@ -75,7 +74,6 @@ class _MainAppState extends State<MainApp> {
             ),
           ],
         ),
-
         body: IndexedStack(
           index: _selectedIndex,
           children: [

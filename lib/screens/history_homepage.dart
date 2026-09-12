@@ -1,6 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pmobile913/db/HistoricoDao.dart';
-import 'package:pmobile913/db/db_helper.dart';
 import 'package:pmobile913/domain/historico.dart';
 import 'package:pmobile913/widget/container_historico.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +23,12 @@ class _HistoricoPageState extends State<HistoricoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "History",
+              "Histórico",
               style: GoogleFonts.inter(
                 textStyle: TextStyle(
                   color: Color(0xFFff6b00),

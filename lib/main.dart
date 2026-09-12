@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/screens/historico_page.dart';
-import 'package:pmobile913/screens/inicial_page.dart';
+import 'package:pmobile913/screens/history_homepage.dart';
+import 'package:pmobile913/screens/home.dart';
 import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
-import 'package:pmobile913/screens/inbox.dart';
+import 'package:pmobile913/screens/inbox_homepage.dart';
 import 'package:pmobile913/screens/profile.dart';
 
 void main() {
@@ -23,6 +23,16 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF121212),
+          surface: Color(0xFF1E1E1E),
+        ),
+        scaffoldBackgroundColor: const Color(0xFF121212),
+      ),
+
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color(0xFF2d2d2d),

@@ -6,10 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ContainerHistorico extends StatefulWidget {
   final Historico historico;
 
-  const ContainerHistorico({
-    super.key,
-    required this.historico,
-  });
+  const ContainerHistorico({super.key, required this.historico});
 
   @override
   State<ContainerHistorico> createState() => _ContainerHistoricoState();
@@ -25,25 +22,17 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return HistoricoDetail(
-                historico: widget.historico,
-              );
+              return HistoricoDetail(historico: widget.historico);
             },
           ),
         );
       },
       child: Card(
-        // Mantém o card claro, sem alterar o fundo da página
         color: Colors.white10,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.15),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
@@ -85,7 +74,6 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
                       style: GoogleFonts.poppins(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF333333),
                       ),
                     ),
 
@@ -118,11 +106,7 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
               const SizedBox(width: 8),
 
               // Ícone indicando que o card é clicável
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 17,
-                color: Colors.grey.shade500,
-              ),
+              Icon(Icons.arrow_forward_ios_rounded, size: 17),
             ],
           ),
         ),

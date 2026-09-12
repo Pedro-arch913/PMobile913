@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/screens/confirm_page.dart';
 import 'package:pmobile913/screens/detail_page.dart';
 import 'package:pmobile913/domain/dados.dart';
 

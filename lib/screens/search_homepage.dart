@@ -13,10 +13,7 @@ class _SearchHomePageState extends State<SearchHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
-
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -35,24 +32,20 @@ class _SearchHomePageState extends State<SearchHomePage> {
       ),
 
       body: ListView(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(14),
         children: [
           Container(
             height: 46,
-            decoration: BoxDecoration(
-              color: const Color(0xFF2B2B2B),
-              borderRadius: BorderRadius.circular(9),
-            ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(9)),
             child: TextField(
-              style: GoogleFonts.inter(color: Colors.white, fontSize: 14),
+              style: GoogleFonts.inter(fontSize: 14),
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Search Services',
-                hintStyle: GoogleFonts.inter(
-                  color: Colors.grey.shade500,
-                  fontSize: 14,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(26),
                 ),
-                prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
+                hintText: 'Pesquisar Serviços',
+                hintStyle: GoogleFonts.inter(fontSize: 14),
+                prefixIcon: Icon(Icons.search),
               ),
             ),
           ),

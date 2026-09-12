@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pmobile913/screens/search_homepage.dart';
+import 'package:pmobile913/api/profile_api.dart';
+import 'package:pmobile913/domain/profile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -10,19 +11,26 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  late Future<Profile> futureProfile;
+
+  @override
+  void initState() {
+    super.initState();
+    // Substituído o ProfileDao() por ProfileApi()
+    futureProfile = ProfileApi().buscarProfile();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1F1F1F),
-
       appBar: AppBar(
-        backgroundColor: Color(0xFF282829),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Profile",
+              "Perfil",
               style: GoogleFonts.inter(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   color: Color(0xFFff6b00),
                   fontWeight: FontWeight.w800,
                   fontSize: 24,
@@ -32,62 +40,85 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
-
-      body: ListView(
-        //icone usuario
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 40),
-            child: Center(
-              child: CircleAvatar(
-                foregroundImage: NetworkImage(
-                  'https://cdn-icons-png.flaticon.com/512/3106/3106921.png',
-                ),
-                backgroundColor: Color(0xFF6F6F6F),
-                radius: 100,
-              ),
-            ),
-          ),
-
-          //nome usuario
-          SizedBox(height: 15),
-          Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              decoration: BoxDecoration(
-                color: Color(0xFF2d2d2d),
-                borderRadius: BorderRadius.circular(60),
-              ),
+      body: FutureBuilder<Profile>(
+        future: futureProfile,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            Profile profile = snapshot.requireData;
+            return buildListView(profile);
+          } else if (snapshot.hasError) {
+            return Center(
               child: Text(
-                '  Username  ',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+                "Erro ao carregar dados",
+                style: TextStyle(color: Colors.white),
+              ),
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
+
+  Widget buildListView(Profile profile) {
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(14),
+          child: Center(
+            child: CircleAvatar(
+              // Exibe a imagem vinda da API
+              foregroundImage: profile.avatarUrl.isNotEmpty
+                  ? NetworkImage(profile.avatarUrl)
+                  : const NetworkImage(
+                      'https://cdn-icons-png.flaticon.com/512/3106/3106921.png',
+                    ),
+              backgroundColor: const Color(0xFF6F6F6F),
+              radius: 100,
+            ),
+          ),
+        ),
+        const SizedBox(height: 15),
+        Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFF2d2d2d),
+              borderRadius: BorderRadius.circular(60),
+            ),
+            child: Text(
+              profile.username,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
           ),
-
-          //detalhes perfil
-          Container(
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(bottom: 1, left: 4, right: 4),
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Color(0xFF666666),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Email:', style: TextStyle(color: Colors.white)),
-                Text('Telephone:', style: TextStyle(color: Colors.white)),
-              ],
-            ),
+        ),
+        Container(
+          alignment: Alignment.topLeft,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color(0xFF666666),
+            borderRadius: BorderRadius.circular(12),
           ),
-        ],
-      ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Email: ${profile.email}',
+                style: const TextStyle(color: Colors.white),
+              ),
+              Text(
+                'Telephone: ${profile.telephone}',
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

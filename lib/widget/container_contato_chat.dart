@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/domain/contatos.dart';
-import 'package:pmobile913/screens/chat.dart';
+import 'package:pmobile913/screens/inbox_chat.dart';
 
 class ContainerContato extends StatefulWidget {
   Contatos contato;

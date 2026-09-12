@@ -40,13 +40,15 @@ class _InicialPageState extends State<InicialPage> {
             child: TextField(
               style: GoogleFonts.inter(fontSize: 14),
               decoration: InputDecoration(
-                border: InputBorder.none,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(26),
+                ),
                 hintText: 'Pesquisar Serviços',
                 hintStyle: GoogleFonts.inter(fontSize: 14),
                 prefixIcon: Icon(Icons.search),
-                ),
               ),
             ),
+          ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -74,7 +74,6 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
                       style: GoogleFonts.poppins(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF333333),
                       ),
                     ),
 
@@ -107,11 +106,7 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
               const SizedBox(width: 8),
 
               // Ícone indicando que o card é clicável
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 17,
-                color: Colors.grey.shade500,
-              ),
+              Icon(Icons.arrow_forward_ios_rounded, size: 17),
             ],
           ),
         ),

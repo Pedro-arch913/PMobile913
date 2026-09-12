@@ -40,7 +40,9 @@ class _SearchHomePageState extends State<SearchHomePage> {
             child: TextField(
               style: GoogleFonts.inter(fontSize: 14),
               decoration: InputDecoration(
-                border: InputBorder.none,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(26),
+                ),
                 hintText: 'Pesquisar Serviços',
                 hintStyle: GoogleFonts.inter(fontSize: 14),
                 prefixIcon: Icon(Icons.search),

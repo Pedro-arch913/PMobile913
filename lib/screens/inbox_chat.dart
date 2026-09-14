@@ -6,12 +6,14 @@ class Chat extends StatefulWidget {
   final String name;
   final String avatar;
   final String info;
+  final double avaliacao;
 
   const Chat({
     super.key,
     required this.name,
     required this.avatar,
     required this.info,
+    required this.avaliacao,
   });
 
   @override
@@ -31,24 +33,20 @@ class _ChatState extends State<Chat> {
     super.initState();
     chatbotService = OpenRouterChatbotService(
       apiKey:
-          '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', // ← ALTERE COM SUA CHAVE
+          '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',
     );
 
-    systemPrompt =
-        '''
-Você é um representante da empresa ${widget.name}.
-Informações: ${widget.info}
+    systemPrompt = ProfissionalPrompts.criarPromptPersonalizado(
+      nome: widget.name,
+      especialidade: widget.info,
+      avaliacao: widget.avaliacao,
+    );
 
-Você é atencioso, profissional e sempre busca ajudar.
-Fale de forma natural e conversacional.
-Responda sobre serviços, orçamentos e agendamentos.
-Seja amigável mas profissional.
-''';
-
-    _adicionarMensagem(
-      texto:
-          'Olá! Sou um representante da ${widget.name}. Como posso ajudá-lo?',
-      isMe: false,
+    systemPrompt = ProfissionalPrompts.criarPromptPersonalizado(
+      nome: widget.name,
+      especialidade: widget.info,
+      avaliacao: widget.avaliacao,
+      informacoesAdicionais: widget.info,
     );
   }
 
@@ -106,18 +104,30 @@ Seja amigável mas profissional.
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Column(
-          children: [
-            Text(
-              widget.name,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            Text(widget.info, style: TextStyle(fontSize: 14)),
-          ],
-        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
+        ),
+        title: Column(
+          children: [
+            Text(
+              widget.name + " - " + widget.info,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.star, color: Colors.yellowAccent),
+                Text(
+                  widget.avaliacao.toString() + "/5",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: const Color.fromARGB(236, 255, 255, 255),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
         actions: [
           Padding(
@@ -131,13 +141,15 @@ Seja amigável mas profissional.
       ),
       body: Column(
         children: [
-          // Lista de mensagens
           Expanded(
             child: _mensagens.isEmpty
                 ? Center(
                     child: Text(
                       'Nenhuma mensagem ainda',
-                      style: TextStyle(color: Colors.white54),
+                      style: TextStyle(
+                        color: Colors.white54,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )
                 : ListView.builder(
@@ -150,19 +162,8 @@ Seja amigável mas profissional.
                     },
                   ),
           ),
-
-          // Indicador de carregamento
-          if (_carregando)
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Colors.white),
-              ),
-            ),
-
-          // Input de mensagem (mantem o mesmo, mas altere o onPressed)
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
             color: Color(0xFF2D2D2D),
             child: Row(
               children: [
@@ -197,7 +198,7 @@ Seja amigável mas profissional.
                         )
                       : IconButton(
                           icon: Icon(Icons.send, color: Colors.white),
-                          onPressed: _enviarMensagem, // ← MUDOU AQUI!
+                          onPressed: _enviarMensagem,
                         ),
                 ),
               ],

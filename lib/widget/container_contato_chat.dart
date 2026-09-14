@@ -24,6 +24,7 @@ class _ContainerContatoState extends State<ContainerContato> {
                 name: widget.contato.nome,
                 avatar: widget.contato.foto,
                 info: widget.contato.info,
+                avaliacao: widget.contato.avaliacao,
               );
             },
           ),

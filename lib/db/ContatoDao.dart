@@ -15,6 +15,17 @@ class ContatoDao {
       Contatos contatos = Contatos.fromJson(json);
       lista.add(contatos);
     }
+    print('\n╔════════════════════════════════════╗');
+    print('║       CONTATOS NO BANCO DE DADOS   ║');
+    print('╚════════════════════════════════════╝');
+    for (var c in lista) {
+      print('ID: ${'X' * 10}'); // Esconde ID
+      print('📝 Nome: ${c.nome}');
+      print('ℹ️  Info: ${c.info}');
+      print('⏰ Time: ${c.time}');
+      print('─────────────────────────────────────');
+    }
+    print('Total: ${lista.length} contatos\n');
 
     return lista;
   }

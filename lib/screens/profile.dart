@@ -67,7 +67,6 @@ class _ProfilePageState extends State<ProfilePage> {
           padding: const EdgeInsets.all(14),
           child: Center(
             child: CircleAvatar(
-              // Exibe a imagem vinda da API
               foregroundImage: profile.avatarUrl.isNotEmpty
                   ? NetworkImage(profile.avatarUrl)
                   : const NetworkImage(

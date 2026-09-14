@@ -9,7 +9,6 @@ class Contatos {
     required this.info,
     required this.time,
     required this.foto,
-
   });
   Contatos.fromJson(Map<String, dynamic> json) {
     nome = (json['nome']).toString();

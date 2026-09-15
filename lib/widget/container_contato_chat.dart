@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pmobile913/domain/contatos.dart';
+import 'package:pmobile913/domain/empresa.dart';
 import 'package:pmobile913/screens/inbox_chat.dart';
 
 class ContainerContato extends StatefulWidget {
-  Contatos contato;
+  Empresa empresa;
 
-  ContainerContato({super.key, required this.contato});
+  ContainerContato({super.key, required this.empresa});
 
   @override
   State<ContainerContato> createState() => _ContainerContatoState();
@@ -21,9 +21,11 @@ class _ContainerContatoState extends State<ContainerContato> {
           MaterialPageRoute(
             builder: (context) {
               return Chat(
-                name: widget.contato.nome,
-                avatar: widget.contato.foto,
-                info: widget.contato.info,
+                empresaId: widget.empresa.id,
+                name: widget.empresa.nome,
+                avatar: widget.empresa.avatar,
+                info: widget.empresa.informacao,
+                avaliacao: widget.empresa.avaliacao,
               );
             },
           ),
@@ -37,12 +39,12 @@ class _ContainerContatoState extends State<ContainerContato> {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            foregroundImage: NetworkImage(widget.contato.foto),
+            foregroundImage: NetworkImage(widget.empresa.avatar),
             radius: 20,
             backgroundColor: Color(0x7CFFFFFF),
           ),
           title: Text(
-            widget.contato.nome,
+            widget.empresa.nome,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -50,11 +52,11 @@ class _ContainerContatoState extends State<ContainerContato> {
             ),
           ),
           subtitle: Text(
-            widget.contato.info,
+            widget.empresa.informacao,
             style: TextStyle(color: Colors.white70, fontSize: 15),
           ),
           trailing: Text(
-            widget.contato.time,
+            widget.empresa.horario,
             style: TextStyle(color: Colors.white, fontSize: 15),
           ),
         ),

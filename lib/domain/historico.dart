@@ -8,8 +8,8 @@ class Historico {
     required this.servico,
     required this.preco,
   });
+
   Historico.fromJson(Map<String, dynamic> json) {
-    //id = json['id'];
     imagem = json['imagem'].toString();
     servico = json['servico'].toString();
     preco = json['preco'].toString();

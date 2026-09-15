@@ -33,7 +33,6 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
         );
       },
       child: Card(
-        // Mantém o card claro, sem alterar o fundo da página
         color: Colors.white10,
         elevation: 4,
         shadowColor: Colors.black.withOpacity(0.15),
@@ -85,7 +84,7 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
                       style: GoogleFonts.poppins(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF333333),
+                        color: const Color(0xFF868686),
                       ),
                     ),
 
@@ -102,7 +101,7 @@ class _ContainerHistoricoState extends State<ContainerHistorico> {
                         const SizedBox(width: 3),
 
                         Text(
-                          "R\$ ${widget.historico.preco}",
+                          "${widget.historico.preco}",
                           style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

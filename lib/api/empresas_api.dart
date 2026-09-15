@@ -19,4 +19,10 @@ class EmpresasApi {
 
     return lista;
   }
+
+  Future<Empresa> buscarEmpresa(int id) async {
+    final response = await dio.get('$baseUrl/empresas/$id');
+    Empresa empresa = Empresa.fromJson(response.data);
+    return empresa;
+  }
 }

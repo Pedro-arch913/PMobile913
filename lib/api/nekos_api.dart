@@ -5,8 +5,10 @@ class NekosApi {
   String baseUrl = 'https://api.nekosapi.com/v4';
 
   Future<List<String>> listarAvatares(int quantidade) async {
+  
     int limite = quantidade * 3;
-   
+    if (limite > 100) {
+      limite = 100;
     }
 
     final response = await dio.get(
@@ -17,7 +19,7 @@ class NekosApi {
 
     if (response.statusCode == 200) {
       for (var json in response.data) {
-        if (json['rating'] == 'safe') {
+        if (json['rating'] == 'safe' && avatares.length < quantidade) {
           avatares.add(json['url']);
         }
       }

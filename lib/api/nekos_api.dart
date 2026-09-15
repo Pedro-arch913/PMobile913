@@ -5,8 +5,6 @@ class NekosApi {
   String baseUrl = 'https://api.nekosapi.com/v4';
 
   Future<List<String>> listarAvatares(int quantidade) async {
-    // Pede mais imagens do que o necessário porque nem toda imagem
-    // marcada como "safe" pela API é usada.
     int limite = quantidade * 3;
     if (limite > 100) {
       limite = 100;

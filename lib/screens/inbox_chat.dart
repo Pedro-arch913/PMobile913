@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/widget/build_message_chat.dart';
 import 'package:pmobile913/api/chatbot_api.dart';
+import 'package:pmobile913/api/empresas_api.dart';
+import 'package:pmobile913/domain/empresa.dart';
 
 class Chat extends StatefulWidget {
   final String name;
   final String avatar;
   final String info;
   final double avaliacao;
+  final int? empresaId;
 
   const Chat({
     super.key,
@@ -14,6 +17,7 @@ class Chat extends StatefulWidget {
     required this.avatar,
     required this.info,
     required this.avaliacao,
+    this.empresaId,
   });
 
   @override
@@ -27,19 +31,14 @@ class _ChatState extends State<Chat> {
   bool _carregando = false;
   late OpenRouterChatbotService chatbotService;
   late String systemPrompt;
+  Future<Empresa>? futureEmpresa;
 
   @override
   void initState() {
     super.initState();
     chatbotService = OpenRouterChatbotService(
       apiKey:
-          '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',
-    );
-
-    systemPrompt = ProfissionalPrompts.criarPromptPersonalizado(
-      nome: widget.name,
-      especialidade: widget.info,
-      avaliacao: widget.avaliacao,
+      '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',
     );
 
     systemPrompt = ProfissionalPrompts.criarPromptPersonalizado(
@@ -48,6 +47,10 @@ class _ChatState extends State<Chat> {
       avaliacao: widget.avaliacao,
       informacoesAdicionais: widget.info,
     );
+
+    if (widget.empresaId != null) {
+      futureEmpresa = EmpresasApi().buscarEmpresa(widget.empresaId!);
+    }
   }
 
   void _adicionarMensagem({required String texto, required bool isMe}) {
@@ -108,27 +111,7 @@ class _ChatState extends State<Chat> {
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Column(
-          children: [
-            Text(
-              widget.name + " - " + widget.info,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.star, color: Colors.yellowAccent),
-                Text(
-                  widget.avaliacao.toString() + "/5",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: const Color.fromARGB(236, 255, 255, 255),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+        title: buildTitulo(),
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -144,23 +127,23 @@ class _ChatState extends State<Chat> {
           Expanded(
             child: _mensagens.isEmpty
                 ? Center(
-                    child: Text(
-                      'Nenhuma mensagem ainda',
-                      style: TextStyle(
-                        color: Colors.white54,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+              child: Text(
+                'Nenhuma mensagem ainda',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
                 : ListView.builder(
-                    padding: EdgeInsets.all(10),
-                    itemCount: _mensagens.length,
-                    itemBuilder: (context, index) {
-                      final msg = _mensagens[index];
-                      final isMe = msg['isMe'] == 'true';
-                      return BuildMessage(text: msg['text'] ?? '', isMe: isMe);
-                    },
-                  ),
+              padding: EdgeInsets.all(10),
+              itemCount: _mensagens.length,
+              itemBuilder: (context, index) {
+                final msg = _mensagens[index];
+                final isMe = msg['isMe'] == 'true';
+                return BuildMessage(text: msg['text'] ?? '', isMe: isMe);
+              },
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
@@ -189,23 +172,84 @@ class _ChatState extends State<Chat> {
                   backgroundColor: Color(0xFFFF6B00),
                   child: _carregando
                       ? SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation(Colors.white),
-                            strokeWidth: 2,
-                          ),
-                        )
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                      strokeWidth: 2,
+                    ),
+                  )
                       : IconButton(
-                          icon: Icon(Icons.send, color: Colors.white),
-                          onPressed: _enviarMensagem,
-                        ),
+                    icon: Icon(Icons.send, color: Colors.white),
+                    onPressed: _enviarMensagem,
+                  ),
                 ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  buildTitulo() {
+    if (futureEmpresa == null) {
+      return Column(
+        children: [
+          Text(
+            widget.name + " - " + widget.info,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.star, color: Colors.yellowAccent),
+              Text(
+                widget.avaliacao.toString() + "/5",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: const Color.fromARGB(236, 255, 255, 255),
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    }
+
+    return FutureBuilder(
+      future: futureEmpresa,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          Empresa empresa = snapshot.requireData;
+          return Column(
+            children: [
+              Text(
+                empresa.nome + " - " + empresa.informacao,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.star, color: Colors.yellowAccent),
+                  Text(
+                    empresa.avaliacao.toString() + "/5",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: const Color.fromARGB(236, 255, 255, 255),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        }
+
+        return Text(
+          "Carregando...",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        );
+      },
     );
   }
 }

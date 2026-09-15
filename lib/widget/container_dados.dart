@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/domain/dados.dart';
 import 'package:pmobile913/screens/detail_page.dart';
-import 'package:pmobile913/screens/trabalhador_chatbot.dart';
+import 'package:pmobile913/screens/inbox_chat.dart';
 
 class ContainerDados extends StatefulWidget {
   Dados dados;
@@ -20,10 +20,11 @@ class _ContainerDadosState extends State<ContainerDados> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => TrabalhadorChatbot(
-              trabalhador: widget.dados,
-              apiKey:
-                  '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',
+            builder: (context) => Chat(
+              name: widget.dados.nome,
+              avatar: widget.dados.urlImagem,
+              info: widget.dados.informacoes,
+              avaliacao: double.parse(widget.dados.avaliacao),
             ),
           ),
         );

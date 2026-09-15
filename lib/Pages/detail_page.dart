@@ -48,7 +48,7 @@ class _DetailPageState extends State<DetailPage>{
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    const Icon(Icons.star, size: 18, color: Color(0xFFE41D56)),
+                    const Icon(Icons.star, size: 18, color: Color(0xFFFFC400)),
                     const SizedBox(width: 4),
                     Text(dados.avaliacao),
                   ],

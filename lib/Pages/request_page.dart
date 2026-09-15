@@ -5,7 +5,6 @@
 
  import 'package:flutter/material.dart';
  import 'package:teste01/Pages/confirm_page.dart';
- import 'package:teste01/Pages/searching_service.dart';
 
  class HomePage extends StatefulWidget {
    const HomePage({Key? key}) : super(key: key);

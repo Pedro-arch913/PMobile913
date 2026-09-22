@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart';
 import 'package:pmobile913/widget/build_message_chat.dart';
 import 'package:pmobile913/api/chatbot_api.dart';
 import 'package:pmobile913/api/empresas_api.dart';
@@ -36,10 +38,8 @@ class _ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
-    chatbotService = OpenRouterChatbotService(
-      apiKey:
-      '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',
-    );
+    final apiKey = dotenv.get('API_KEY');
+    chatbotService = OpenRouterChatbotService(apiKey: apiKey);
 
     systemPrompt = ProfissionalPrompts.criarPromptPersonalizado(
       nome: widget.name,
@@ -127,23 +127,23 @@ class _ChatState extends State<Chat> {
           Expanded(
             child: _mensagens.isEmpty
                 ? Center(
-              child: Text(
-                'Nenhuma mensagem ainda',
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
+                    child: Text(
+                      'Nenhuma mensagem ainda',
+                      style: TextStyle(
+                        color: Colors.white54,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
                 : ListView.builder(
-              padding: EdgeInsets.all(10),
-              itemCount: _mensagens.length,
-              itemBuilder: (context, index) {
-                final msg = _mensagens[index];
-                final isMe = msg['isMe'] == 'true';
-                return BuildMessage(text: msg['text'] ?? '', isMe: isMe);
-              },
-            ),
+                    padding: EdgeInsets.all(10),
+                    itemCount: _mensagens.length,
+                    itemBuilder: (context, index) {
+                      final msg = _mensagens[index];
+                      final isMe = msg['isMe'] == 'true';
+                      return BuildMessage(text: msg['text'] ?? '', isMe: isMe);
+                    },
+                  ),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 9),
@@ -172,17 +172,17 @@ class _ChatState extends State<Chat> {
                   backgroundColor: Color(0xFFFF6B00),
                   child: _carregando
                       ? SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(Colors.white),
-                      strokeWidth: 2,
-                    ),
-                  )
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(Colors.white),
+                            strokeWidth: 2,
+                          ),
+                        )
                       : IconButton(
-                    icon: Icon(Icons.send, color: Colors.white),
-                    onPressed: _enviarMensagem,
-                  ),
+                          icon: Icon(Icons.send, color: Colors.white),
+                          onPressed: _enviarMensagem,
+                        ),
                 ),
               ],
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/screens/history_homepage.dart';
 import 'package:pmobile913/screens/home.dart';
+import 'package:pmobile913/screens/map_sample.dart';
 import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox_homepage.dart';
@@ -61,6 +62,11 @@ class _MainAppState extends State<MainApp> {
               label: 'Explorar',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.explore_outlined),
+              activeIcon: Icon(Icons.explore),
+              label: 'Explorar',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.message_outlined),
               activeIcon: Icon(Icons.message),
               label: 'Mensagens',
@@ -82,6 +88,7 @@ class _MainAppState extends State<MainApp> {
           children: [
             InicialPage(),
             SearchHomePage(),
+            MapSample(),
             Inbox(),
             ProfilePage(),
             HistoricoPage(),

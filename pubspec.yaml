@@ -41,7 +41,8 @@ dependencies:
   path:
   shared_preferences:
   dio:
-  http: 
+  http:
+  google_maps_flutter:
 dev_dependencies:
   flutter_test:
     sdk: flutter

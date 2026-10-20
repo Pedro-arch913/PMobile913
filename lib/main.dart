@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pmobile913/screens/history_homepage.dart';
 import 'package:pmobile913/screens/home.dart';
-import 'package:pmobile913/screens/map_sample.dart';
+import 'package:pmobile913/screens/map_profile.dart';
 import 'package:pmobile913/screens/request_page.dart';
 import 'package:pmobile913/screens/search_homepage.dart';
 import 'package:pmobile913/screens/inbox_homepage.dart';
@@ -9,8 +9,8 @@ import 'package:pmobile913/screens/profile.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await dotenv.load(fileName: ".env");
   runApp(const MainApp());
 }
 
@@ -62,25 +62,21 @@ class _MainAppState extends State<MainApp> {
               label: 'Explorar',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.explore_outlined),
-              activeIcon: Icon(Icons.explore),
-              label: 'Explorar',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.message_outlined),
               activeIcon: Icon(Icons.message),
               label: 'Mensagens',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              activeIcon: Icon(Icons.person),
-              label: 'Perfil',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.history_outlined),
               activeIcon: Icon(Icons.history),
               label: 'Histórico',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline),
+              activeIcon: Icon(Icons.person),
+              label: 'Perfil',
+            ),
+
           ],
         ),
         body: IndexedStack(
@@ -88,10 +84,9 @@ class _MainAppState extends State<MainApp> {
           children: [
             InicialPage(),
             SearchHomePage(),
-            MapSample(),
             Inbox(),
-            ProfilePage(),
             HistoricoPage(),
+            ProfilePage(),
           ],
         ),
       ),

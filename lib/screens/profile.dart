@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pmobile913/api/profile_api.dart';
 import 'package:pmobile913/domain/profile.dart';
+import 'package:pmobile913/screens/map_profile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -117,6 +118,22 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
+        SizedBox(height: 15),
+        Container(
+          alignment: Alignment.center,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MapProfile(),
+                ),
+              );
+            },
+            child: const Text('Sua localização',
+                style: TextStyle(color: Color(0xFFFFFFFF))),
+          ),
+        )
       ],
     );
   }

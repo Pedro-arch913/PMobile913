@@ -115,6 +115,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 'Telephone: ${profile.telephone}',
                 style: const TextStyle(color: Colors.white),
               ),
+              Text(
+                'location: ${profile.location}',
+                style: const TextStyle(color: Colors.white),
+              ),
             ],
           ),
         ),

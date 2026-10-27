@@ -11,6 +11,7 @@ class ProfileDao {
       username: result[0]['username'].toString(),
       email: result[0]['email'].toString(),
       telephone: result[0]['telephone'].toString(),
+      location: result[0]['location'].toString(),
     );
   }
 }
